@@ -1,13 +1,24 @@
 import { useState } from "react";
 const ExampleOne = function () {
-	const [counter, setCounter] = useState(0);
+
+	const [counter, setCounter] = useState(() => getRandomNum());
+
 
 	function increment() {
-		setCounter(counter + 1)
+		setCounter((prev) => prev + 1);
+		setCounter((prev) => prev + 1);
 	};
 
 	function dicrement() {
-		setCounter(counter - 1)
+		setCounter((prev) => {
+			console.log(prev);
+			return prev - 100;
+		});
+	};
+
+	function getRandomNum() {
+		console.log('some calculations');
+		return Math.trunc(Math.random() * 20);
 	};
 
 	return <>
